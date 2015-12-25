@@ -11,10 +11,6 @@
     "type": "git",
     "url": "git@github.com:imdoroshenko/express-response.git"
   },
-  "keywords": [
-    "multitone",
-    "service-provider"
-  ],
   "devDependencies": {
     "mocha": "^2.3.2",
     "should": "~1.2.2",

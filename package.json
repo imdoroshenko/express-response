@@ -1,6 +1,6 @@
 {
   "name": "express-response",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "HTTP response service for ExpressJS",
   "main": "index.js",
   "private": true,

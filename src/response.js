@@ -1,89 +1,87 @@
-'use strict';
-
 class Response {
 
   constructor () {
-    this._logMethod = this._defaultLogMethod;
-    this._logLevel = 0;
-    this._config = null;
-    this._res = null;
-    this._responseDriver = null;
+    this._logMethod = this._defaultLogMethod
+    this._logLevel = 0
+    this._config = null
+    this._res = null
+    this._responseDriver = null
   }
 
   setLogLevel (logLevel) {
-    this._logLevel = logLevel;
-    return this;
+    this._logLevel = logLevel
+    return this
   }
 
 
   _defaultLogMethod (line) {
-    console.log(line);
+    console.log(line)
   }
 
   setLogMethod (logMethod) {
     if (typeof logMethod === 'function') {
-      this._logMethod = logMethod;
+      this._logMethod = logMethod
     } else {
-      throw new Error('Response.logMethod(), log method is not a function');
+      throw new Error('Response.logMethod(), log method is not a function')
     }
-    return this;
+    return this
   }
 
   setConfig (config) {
-    this._config = config;
-    return this;
+    this._config = config
+    return this
   }
 
   _log (level, value) {
     if (this._logLevel & level) {
-      this._logMethod(value);
+      this._logMethod(value)
     }
-    return this;
+    return this
   }
 
   error (error) {
-    this._log(Response.LOG_ERROR, error.stack || error);
+    this._log(Response.LOG_ERROR, error.stack || error)
     this._responseDriver(this._res, {
       status: error.statusCode || this._config.defaultExceptionStatus,
       headers: error.headers,
       response: error.message
-    });
-    return this;
+    })
+    return this
   }
 
   success (data, options) {
-    this._log(Response.LOG_SUCCESS, data);
+    this._log(Response.LOG_SUCCESS, data)
     this._responseDriver(this._res, {
       status: 200,
       headers: options && options.headers,
       response: data
-    });
-    return this;
+    })
+    return this
   }
 
   download (options) {
-    this._log(Response.LOG_DOWNLOAD, options.filePath);
-    this._downloadDriver(this._res, options);
+    this._log(Response.LOG_DOWNLOAD, options.filePath)
+    this._downloadDriver(this._res, options)
   }
 
   setResponseDriver (driver) {
-    this._responseDriver = driver;
-    return this;
+    this._responseDriver = driver
+    return this
   }
 
   setDownloadDriver (driver) {
-    this._downloadDriver = driver;
-    return this;
+    this._downloadDriver = driver
+    return this
   }
 
   use (res) {
-    this._res = res;
-    return this;
+    this._res = res
+    return this
   }
 }
 
-Response.LOG_ERROR = 1;
-Response.LOG_SUCCESS = 2;
-Response.LOG_DOWNLOAD = 4;
+Response.LOG_ERROR = 1
+Response.LOG_SUCCESS = 2
+Response.LOG_DOWNLOAD = 4
 
-module.exports = Response;
+module.exports = Response

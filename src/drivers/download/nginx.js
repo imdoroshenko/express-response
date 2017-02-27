@@ -1,3 +1,3 @@
-/**
- * Created by idoroshenko on 12/25/15.
- */
+module.exports = function JSONResponseDriver(res, params) {
+  throw new Error('Nginx download driver is not implemented')
+};

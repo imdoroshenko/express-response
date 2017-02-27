@@ -1,6 +1,6 @@
 module.exports = {
   Response: require('./src/response.js'),
-  driver: {
+  drivers: {
     response: {
       json: require('./src/drivers/response/json.js')
     },

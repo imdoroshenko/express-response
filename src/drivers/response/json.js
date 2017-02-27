@@ -1,7 +1,7 @@
 module.exports = function JSONResponseDriver(res, params) {
-    res.type('application/json');
+    res.type('application/json')
     if (params.headers) {
-        res.set(params.headers);
+        res.set(params.headers)
     }
-    res.status(params.status).json(params.response);
+    res.status(params.status).json(params.response)
 };

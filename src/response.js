@@ -59,6 +59,10 @@ class Response {
     return this
   }
 
+  method () {
+    return (res) => this.use(res)
+  }
+
   download (options) {
     this._log(Response.LOG_DOWNLOAD, options.filePath)
     this._downloadDriver(this._res, options)
